@@ -1,8 +1,13 @@
 ﻿Public Class frmMain
 
     Private Sub btnClearOrderForm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClearOrderForm.Click
-        'clearing the list box
+        'clearing the list box and text boxes
         lstInvoice.Items.Clear()
+        txtAddress.Clear()
+        txtCityStateZip.Clear()
+        txtCustomerName.Clear()
+        txtNumOfChairs.Clear()
+        txtNumOfSofas.Clear()
 
     End Sub
 
