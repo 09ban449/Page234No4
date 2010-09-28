@@ -8,14 +8,14 @@
     End Function
 
     Private Function Last() As String
-        'Getting the last name into its own variable
+        'Putting the last name into its own variable
         Dim intName As Integer = txtCustomerName.Text.IndexOf(",")
         Dim strLastName As String = txtCustomerName.Text.Substring(0, intName)
         Return strLastName
     End Function
 
     Private Function First() As String
-        'getting the first name into it's own variable
+        'Putting the first name into it's own variable
         Dim intName As Integer = txtCustomerName.Text.IndexOf(",")
         Dim strFirstName As String = txtCustomerName.Text.Substring(intName + 2)
         Return strFirstName
