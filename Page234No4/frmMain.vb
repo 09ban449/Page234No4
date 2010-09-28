@@ -1,4 +1,25 @@
 ﻿Public Class frmMain
+    Private Function InvoiceNum() As String
+        'makeing the invoice number
+        Dim intNum As Integer = txtCityStateZip.Text.IndexOf(",")
+        Dim strZip As String = txtCityStateZip.Text.Substring(intNum + 6)
+        Dim strInvoiceNumber As String = (txtCustomerName.Text.Substring(0, 2).ToUpper) & strZip
+        Return strInvoiceNumber
+    End Function
+
+    Private Function Last() As String
+        'Getting the last name into its own variable
+        Dim intName As Integer = txtCustomerName.Text.IndexOf(",")
+        Dim strLastName As String = txtCustomerName.Text.Substring(0, intName)
+        Return strLastName
+    End Function
+
+    Private Function First() As String
+        'getting the first name into it's own variable
+        Dim intName As Integer = txtCustomerName.Text.IndexOf(",")
+        Dim strFirstName As String = txtCustomerName.Text.Substring(intName + 2)
+        Return strFirstName
+    End Function
 
     Private Sub btnClearOrderForm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClearOrderForm.Click
         'clearing the list box and text boxes
@@ -25,14 +46,12 @@
         Dim dblTaxAmount As Double = CDbl(reader.ReadLine)
         Dim fmtStr As String = "{0, 15}{1, 15}"
         Dim dblCost, dblTax, dblTotalCost As Double
-        'makeing the invoice number
-        Dim intNum As Integer = txtCityStateZip.Text.IndexOf(",")
-        Dim strZip As String = txtCityStateZip.Text.Substring(intNum + 6)
-        Dim strInvoiceNumber As String = (txtCustomerName.Text.Substring(0, 2).ToUpper) & strZip
-        'switching the last, first name convention to first last
-        Dim intName As Integer = txtCustomerName.Text.IndexOf(",")
-        Dim strFirstName As String = txtCustomerName.Text.Substring(0, intName)
-        Dim strLastName As String = txtCustomerName.Text.Substring(intName + 2)
+
+        'calling the functions made
+        Dim strFirstName As String = First()
+        Dim strLastName As String = Last()
+        Dim strInvoiceNumber As String = InvoiceNum()
+
         'calculations
         dblCost = (CInt(txtNumOfChairs.Text) * dblChair) + (CInt(txtNumOfSofas.Text) * dblSofa)
         dblTax = dblCost * dblTaxAmount
